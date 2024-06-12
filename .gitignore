@@ -106,3 +106,7 @@ dist
 .tern-port
 
 .DS_STORE
+
+#hugo build
+public
+static

@@ -1,33 +1,33 @@
-DefaultContentLanguage = 'da'
+DefaultContentLanguage = 'es'
 baseurl = "/"
 publishdir = "public"
 canonifyUrls = "true"
 disableKinds = ["RSS","taxonomy","taxonomyTerm"]
 
 [author]
-    name = "Luna & Nathan"
-    email = "wedding@kuikgyalokay.com"
+    name = "Edwin & Nathalya"
+    email = "nnnusechec@gmail.com"
 
 [params]
     description = "Informational site about our wedding" # page description -> see ./layouts/partials/head.html
     images = [] #add images here as "img/name.ext" (points to s./static/img/) to populate the default og and twitter <meta> attributes -> see ./layouts/partials/head.html
 
 [languages]
-  [languages.da]
-    languageName = 'Dansk'
-    title = 'Bryllup - Luna & Nathan'
+  [languages.ge]
+    languageName = 'Deutsch'
+    title = 'Meine Ehe - Edwin & Nathalya'
     weight = 1
-    contentDir = 'content/dansk'
+    contentDir = 'content/german'
 
-  [languages.en]
-    languageName = 'English'
-    title = 'Wedding - Luna & Nathan'
+  [languages.es]
+    languageName = 'Español'
+    title = 'Mi boda - Edwin & Nathalya'
     weight = 2
-    contentDir = 'content/english'
+    contentDir = 'content/spanish'
 
-[[languages.da.menu.main]]
-    name = "hjem"
+[[languages.ge.menu.main]]
+    name = "heim"
     url = "/"
-[[languages.en.menu.main]]
+[[languages.es.menu.main]]
     name = "home"
     url = "/"
