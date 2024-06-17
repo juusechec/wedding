@@ -254,7 +254,7 @@
             </div>
         </section>
         <section class="overflow-clip bg-primary-200">
-            <div class="py-6" data-toggle="marquee" data-options="{'direction':'rtl','duration':60}">
+            <div id="marquee" class="py-6" data-toggle="marquee" data-options="{'direction':'rtl','duration':60}">
                 <div
                     class="h4 font-semibold inline-flex flex-row flex-nowrap whitespace-nowrap justify-center gap-x-20 px-10">
                     <span>“La medida del amor es amar sin medida” – San Agustín</span>
@@ -287,24 +287,23 @@
                 document.body.appendChild(s);
                 s.onload = function () {
                     window.vMarquees = [];
-                    document.querySelectorAll('[data-toggle="marquee"]').forEach((elem, index) => {
-                        let options = {};
-                        try {
-                            options = elem.getAttribute('data-options');
+                    const elem = document.getElementById('marquee');
+                    let options = {};
+                    try {
+                        options = elem.getAttribute('data-options');
 
-                            if (options) {
-                                options = JSON.parse(options.split("'").join('"'));
-                            } else {
-                                options = {};
-                            }
-                        } catch (err) {
-                            console.log(err);
+                        if (options) {
+                            options = JSON.parse(options.split("'").join('"'));
+                        } else {
+                            options = {};
                         }
+                    } catch (err) {
+                        console.log(err);
+                    }
 
-                        const marquee = new Marquee(elem, options);
-                        elem.setAttribute('data-marquee-index', index);
-                        window.vMarquees.push(elem);
-                    });
+                    const marquee = new Marquee(elem, options);
+                    elem.setAttribute('data-marquee-index', index);
+                    window.vMarquees.push(elem);
                 }
             })();
     </script>
