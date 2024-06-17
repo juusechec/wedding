@@ -176,8 +176,25 @@
     <script>document.documentElement.classList.add('js')</script>
 
     <style>
-        #marquee>div>div:nth-child(n+2) {
-            display: none
+        @keyframes movefrases {
+            from {
+                transform: translateX(1092px)
+            }
+
+            to {
+                transform: translateX(-3061px)
+            }
+        }
+
+        #frases {
+            width: 3061px;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            animation-timing-function: linear;
+            animation-name: movefrases;
+            animation-duration: 60s
         }
 
         .d-js {
@@ -226,16 +243,14 @@
             </div>
         </section>
         <section class="overflow-clip bg-primary-200">
-            <div id="marquee" class="py-6" data-toggle="marquee" data-options="{'direction':'rtl','duration':5}">
-                <div
-                    class="h4 font-semibold inline-flex flex-row flex-nowrap whitespace-nowrap justify-center gap-x-20 px-10">
-                    <span>“La medida del amor es amar sin medida” – San Agustín</span>
-                    <span>“Cuando amas a alguien, lo amas como es, y no como quisieras que sea” – León Tolstói</span>
-                    <span>“El amor no mira con los ojos, sino con el alma” – William Shakespeare</span>
-                    <span>“El amor no es solo un sentimiento, también es un arte” – Honoré de Balzac</span>
-                    <span>“Algunas personas aman el poder y otras tienen el poder de amar” – Bob Marley</span>
-                    <span>“El amor todo lo vence” – Virgilio</span>
-                </div>
+            <div id="frases"
+                class="h4 font-semibold inline-flex flex-row flex-nowrap whitespace-nowrap justify-center gap-x-20 px-10 py-6">
+                <span>“La medida del amor es amar sin medida” – San Agustín</span>
+                <span>“Cuando amas a alguien, lo amas como es, y no como quisieras que sea” – León Tolstói</span>
+                <span>“El amor no mira con los ojos, sino con el alma” – William Shakespeare</span>
+                <span>“El amor no es solo un sentimiento, también es un arte” – Honoré de Balzac</span>
+                <span>“Algunas personas aman el poder y otras tienen el poder de amar” – Bob Marley</span>
+                <span>“El amor todo lo vence” – Virgilio</span>
             </div>
         </section>
         <section class="pt-28" id="faq">
@@ -287,35 +302,6 @@
 
     <script src="https://d1pnnwteuly8z3.cloudfront.net/libs/webfont/1.6.28/webfont.js"></script>
     <script>WebFont.load({ google: { families: ['Inter:300,300i,400,500,600,700,800', 'Dancing Script:300,300i,400,500,600,700,800&display=swap'] } })</script>
-    <script>
-            (function () {
-                s = document.createElement("script");
-                s.src = "https://d1pnnwteuly8z3.cloudfront.net/libs/versoly-marquee/0.0.2/versoly-marquee.iife.js";
-                s.async = false;
-                document.body.appendChild(s);
-                s.onload = function () {
-                    window.vMarquees = [];
-                    document.querySelectorAll('[data-toggle="marquee"]').forEach((elem, index) => {
-                        let options = {};
-                        try {
-                            options = elem.getAttribute('data-options');
-
-                            if (options) {
-                                options = JSON.parse(options.split("'").join('"'));
-                            } else {
-                                options = {};
-                            }
-                        } catch (err) {
-                            console.log(err);
-                        }
-
-                        const marquee = new Marquee(elem, options);
-                        elem.setAttribute('data-marquee-index', index);
-                        window.vMarquees.push(elem);
-                    });
-                }
-            })();
-    </script>
     <script>
         if (document.getElementById("navbar")) {
             var style = document.createElement('style');
