@@ -176,6 +176,10 @@
     <script>document.documentElement.classList.add('js')</script>
 
     <style>
+        #marquee>div>div:nth-child(n+2) {
+            display: none
+        }
+
         .d-js {
             display: none !important;
         }
@@ -201,7 +205,7 @@
                             </h1>
                             <p class="font-light mb-10 h5">JUNIO 22, 2024 - Parroquia Santiago Apóstol</p>
                         </div>
-                        <p class="block mb-4 text-sm text-muted w-10/12 md:w-8/12 mx-auto">Queres qué los mejores
+                        <p class="block mb-4 text-sm text-muted w-10/12 sm:w-8/12 mx-auto">Queremos qué los mejores
                             momentos del evento no pasen desapercibidos, ayúdanos subiendo las fotos qué hayas tomado y
                             que más te gusten.</p>
                         <div class="flex flex-col md:flex-row justify-center gap-x-2 gap-y-3 mb-3">
@@ -218,6 +222,19 @@
                         <img src="https://d1pnnwteuly8z3.cloudfront.net/images/65a8c623-a602-4fca-934f-6948f6b3e29e/2a38c462-9023-49f7-b665-c33ec02c01ee.jpeg"
                             alt="product" width="1200" height="684" class="overflow-x-clip" />
                     </div>
+                </div>
+            </div>
+        </section>
+        <section class="overflow-clip bg-primary-200">
+            <div id="marquee" class="py-6" data-toggle="marquee" data-options="{'direction':'rtl','duration':60}">
+                <div
+                    class="h4 font-semibold inline-flex flex-row flex-nowrap whitespace-nowrap justify-center gap-x-20 px-10">
+                    <span>“La medida del amor es amar sin medida” – San Agustín</span>
+                    <span>“Cuando amas a alguien, lo amas como es, y no como quisieras que sea” – León Tolstói</span>
+                    <span>“El amor no mira con los ojos, sino con el alma” – William Shakespeare</span>
+                    <span>“El amor no es solo un sentimiento, también es un arte” – Honoré de Balzac</span>
+                    <span>“Algunas personas aman el poder y otras tienen el poder de amar” – Bob Marley</span>
+                    <span>“El amor todo lo vence” – Virgilio</span>
                 </div>
             </div>
         </section>
@@ -254,17 +271,8 @@
             </div>
         </section>
         <section class="overflow-clip bg-primary-200">
-            <div id="marquee" class="py-6" data-toggle="marquee" data-options="{'direction':'rtl','duration':60}">
-                <div
-                    class="h4 font-semibold inline-flex flex-row flex-nowrap whitespace-nowrap justify-center gap-x-20 px-10">
-                    <span>“La medida del amor es amar sin medida” – San Agustín</span>
-                    <span>“Cuando amas a alguien, lo amas como es, y no como quisieras que sea” – León Tolstói</span>
-                    <span>“El amor no mira con los ojos, sino con el alma” – William Shakespeare</span>
-                    <span>“El amor no es solo un sentimiento, también es un arte” – Honoré de Balzac</span>
-                    <span>“Algunas personas aman el poder y otras tienen el poder de amar” – Bob Marley</span>
-                    <span>“El amor todo lo vence” – Virgilio</span>
-                </div>
-            </div>
+            <img
+                src="https://d1pnnwteuly8z3.cloudfront.net/images/65a8c623-a602-4fca-934f-6948f6b3e29e/b4feffc4-7075-4c53-a2e9-27cd28906e99.jpeg" />
         </section>
         <footer class="bg-dark text-white py-6" id="footer">
             <div class="container">
@@ -287,23 +295,24 @@
                 document.body.appendChild(s);
                 s.onload = function () {
                     window.vMarquees = [];
-                    const elem = document.getElementById('marquee');
-                    let options = {};
-                    try {
-                        options = elem.getAttribute('data-options');
+                    document.querySelectorAll('[data-toggle="marquee"]').forEach((elem, index) => {
+                        let options = {};
+                        try {
+                            options = elem.getAttribute('data-options');
 
-                        if (options) {
-                            options = JSON.parse(options.split("'").join('"'));
-                        } else {
-                            options = {};
+                            if (options) {
+                                options = JSON.parse(options.split("'").join('"'));
+                            } else {
+                                options = {};
+                            }
+                        } catch (err) {
+                            console.log(err);
                         }
-                    } catch (err) {
-                        console.log(err);
-                    }
 
-                    const marquee = new Marquee(elem, options);
-                    elem.setAttribute('data-marquee-index', index);
-                    window.vMarquees.push(elem);
+                        const marquee = new Marquee(elem, options);
+                        elem.setAttribute('data-marquee-index', index);
+                        window.vMarquees.push(elem);
+                    });
                 }
             })();
     </script>
