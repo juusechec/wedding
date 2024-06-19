@@ -226,11 +226,10 @@
                             momentos del evento no pasen desapercibidos, ayúdanos subiendo las fotos qué hayas tomado y
                             que más te gusten.</p>
                         <div class="flex flex-col md:flex-row justify-center gap-x-2 gap-y-3 mb-3">
-                            <a class="btn btn-primary btn-lg" href="https://forms.gle/EJYJCsKTjqZDdyvSA">Adjuntar Fotos
-                                ➔</a>
+                            <a class="btn btn-primary btn-lg"
+                                href="https://photos.app.goo.gl/a3hW4xSg16SMv68b6">Adjuntar Fotos ➔</a>
                             <a class="btn btn-lg btn-ghost btn-primary"
-                                href="https://drive.google.com/drive/folders/1es3OQq_ndXQqgo8wNh15X3mCGGqZjU9PNx--mP6QPjEYB_t5fK6HUSZitpnH4ZLuWf3qfjgT?usp=drive_link">Ver
-                                fotos</a>
+                                href="https://photos.app.goo.gl/a3hW4xSg16SMv68b6">Ver fotos</a>
                         </div>
                     </div>
                 </div>
@@ -246,6 +245,7 @@
             <div id="frases"
                 class="h4 font-semibold inline-flex flex-row flex-nowrap whitespace-nowrap justify-center gap-x-20 px-10 py-6">
                 <span>“La medida del amor es amar sin medida” – San Agustín</span>
+                <span>“Porque en los ojos correctos, siempre serás arte” - Jairo Guerrero</span>
                 <span>“Cuando amas a alguien, lo amas como es, y no como quisieras que sea” – León Tolstói</span>
                 <span>“El amor no mira con los ojos, sino con el alma” – William Shakespeare</span>
                 <span>“El amor no es solo un sentimiento, también es un arte” – Honoré de Balzac</span>
@@ -259,6 +259,9 @@
                     <div class="col text-center w-full">
                         <h2 class="display-5 font-semibold mb-3">MATRIMONIO</h2>
                         <p class="text-muted">JUNIO | 22 | 2024</p>
+                        <p>Días: <b id="days">00</b>, Horas: <b id="hours">00</b>, Minutos: <b id="minutes">00</b>,
+                            Segundos: <b id="seconds">00</b>
+                        </p>
                     </div>
                 </div>
                 <div class="row mb-12">
@@ -285,8 +288,8 @@
                 </div>
             </div>
         </section>
-        <section class="overflow-clip bg-primary-200">
-            <img
+        <section class="overflow-clip">
+            <img class="mx-auto"
                 src="https://d1pnnwteuly8z3.cloudfront.net/images/65a8c623-a602-4fca-934f-6948f6b3e29e/b4feffc4-7075-4c53-a2e9-27cd28906e99.jpeg" />
         </section>
         <footer class="bg-dark text-white py-6" id="footer">
@@ -337,7 +340,32 @@
     </script>
 
 
+    <script>var countDownTarget = new Date(1719072000000).getTime();
 
+        function showClock(target) {
+            const distance = target - new Date().getTime();
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = distance < 0 ? 0 : Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = distance < 0 ? 0 : Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the results
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = mins;
+            document.getElementById("seconds").innerHTML = secs;
+        }
+
+        showClock(countDownTarget);
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+            showClock(countDownTarget);
+            if (countDownTarget - new Date().getTime() < 0) {
+                clearInterval(x);
+            }
+        }, 1000);
+    </script>
 </body>
 
 </html>
